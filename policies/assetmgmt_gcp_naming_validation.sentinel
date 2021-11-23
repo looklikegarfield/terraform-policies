@@ -12,13 +12,21 @@ param environment
 
 # Resource Types to check labels
 resourceTypesNameMap = {
-	"google_pubsub_topic":          "name",
-	"google_secret_manager_secret": "secret_id",
-	"google_dataproc_cluster":      "name",
-	"google_storage_bucket":        "name",
-	"google_kms_key_ring":          "name",
-	"google_kms_crypto_key":        "name",
-	"google_bigquery_dataset":      "dataset_id",
+	"google_pubsub_topic":                     "name",
+	"google_secret_manager_secret":            "secret_id",
+	"google_dataproc_cluster":                 "name",
+	"google_storage_bucket":                   "name",
+	"google_kms_key_ring":                     "name",
+	"google_kms_crypto_key":                   "name",
+	"google_bigquery_dataset":                 "dataset_id",
+	"google_compute_interconnect_attachment":  "name",
+	"google_compute_network":                  "name",
+	"google_compute_subnetwork":               "name",
+	"google_compute_network_peering":          "name",
+	"google_compute_route":                    "name",
+	"google_compute_router":                   "name",
+	"google_data_loss_prevention_job_trigger": "display_name",
+	"google_dialogflow_cx_agent":              "display_name",
 }
 
 _naming = ["google_bigquery_dataset"]

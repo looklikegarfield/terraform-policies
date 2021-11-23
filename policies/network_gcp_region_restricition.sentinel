@@ -10,7 +10,7 @@ import "tfplan-functions" as plan
 import "strings"
 import "types"
 
-prefix = ["us-"]
+prefix = ["us-", "northamerica-", "nam-"]
 multi_region_var = ["US"]
 
 # Resource Types Region Map
@@ -33,6 +33,9 @@ resourceTypesRegionMap = {
 	},
 	"google_compute_interconnect_attachment": {
 		"key": "region",
+	},
+	"google_spanner_instance": {
+		"key": "config",
 	},
 }
 
