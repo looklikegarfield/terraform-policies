@@ -19,82 +19,34 @@ policy "enforce-mandatory-labels" {
     enforcement_level = "advisory"
 }
 
-    policy "appsec_gcp_serviceaccount_restriction" {
-    source = "./appsec_gcp_serviceaccount_restriction.sentinel"
-    enforcement_level = "advisory"
+param "gcp_region" {
+  value = [ "US" ]
 }
 
-policy "assetmgmt_gcp_naming_validation" {
-    source = "./assetmgmt_gcp_naming_validation.sentinel"
-    enforcement_level = "advisory"
+param "owner" {
+  value = ["hybridenv"] 
 }
 
-policy "assetmgmt_gcp_resiliency_validation" {
-    source = "./assetmgmt_gcp_resiliency_validation.sentinel"
-    enforcement_level = "advisory"
+param "application_division" {
+  value =  ["pci", "paa", "hdpa", "hra", "others"]
 }
 
-policy "encryption_gcp_cmek_enforce" {
-    source = "./encryption_gcp_cmek_enforce.sentinel"
-    enforcement_level = "advisory"
+param "application_name" {
+  value =  ["app1","demo"]
 }
 
-policy "iam_gcp_policy_restrictions" {
-    source = "./iam_gcp_policy_restrictions.sentinel"
-    enforcement_level = "advisory"
+param "application_role" {
+  value = ["app", "web", "auth", "data"]
 }
 
-policy "network_gcp_ip_restriction" {
-    source = "./network_gcp_ip_restriction.sentinel"
-    enforcement_level = "advisory"
+param "environment" {
+  value =   ["prod", "int", "uat", "stage", "dev", "test"] 
 }
 
-policy "network_gcp_mtu_restriction" {
-    source = "./network_gcp_mtu_restriction.sentinel"
-    enforcement_level = "advisory"
+param "au" {
+  value = [ "0223092" ]
 }
 
-policy "network_gcp_port_restriction" {
-    source = "./network_gcp_port_restriction.sentinel"
-    enforcement_level = "advisory"
-}
-
-policy "network_gcp_region_restricition" {
-    source = "./network_gcp_region_restricition.sentinel"
-    enforcement_level = "advisory"
-}
-
-policy "network_gcp_ssl_enforce" {
-    source = "./network_gcp_ssl_enforce.sentinel"
-    enforcement_level = "advisory"
-}
-
-policy "storage_gcp_versioning_enforce" {
-    source = "./storage_gcp_versioning_enforce.sentinel"
-    enforcement_level = "advisory"
-}
-
-policy "tagging_gcp_validation" {
-    source = "./tagging_gcp_validation.sentinel"
-    enforcement_level = "advisory"
-}
-
-policy "threat_gcp_data_configuration_restriction" {
-    source = "./threat_gcp_data_configuration_restriction.sentinel"
-    enforcement_level = "advisory"
-}
-
-policy "threat_gcp_unapproved_service_validation" {
-    source = "./threat_gcp_unapproved_service_validation.sentinel"
-    enforcement_level = "advisory"
-}
-    
-policy "network_gcp_subnet_route_restriction" {
-    source = "./network_gcp_subnet_route_restriction.sentinel"
-    enforcement_level = "advisory"
-}
-
-policy "network_gcp_subnet_log_enforce" {
-    source = "./network_gcp_subnet_log_enforce.sentinel"
-    enforcement_level = "advisory"
+param "prefix" {
+    value = "us-"
 }

@@ -10,7 +10,11 @@ import "tfplan-functions" as plan
 import "strings"
 import "types"
 
-prefix = ["us-", "northamerica-", "nam-"]
+prefix = ["us-"]
+spanner_region = ["nam10", "nam11", "nam3", "nam6", "nam7", "nam8", "nam9", "regional-us-central1",
+	"regional-us-east1", "regional-us-east4", "regional-us-west1", "regional-us-west2",
+	"regional-us-west3", "regional-us-west4", "regional-northamerica-northeast1", "regional-northamerica-northeast2"]
+
 multi_region_var = ["US"]
 
 # Resource Types Region Map
@@ -44,10 +48,23 @@ check_for_matches = func(location, address, rc) {
 	violations = {}
 	for location as lk {
 		#print(lk)
-		resource_prefix = strings.split(lk, "-")[0] + "-"
+		#print(rc["type"])
+		is_spanner = rule { rc["type"] == "google_spanner_instance" }
+		print(is_spanner)
 
-		if not (resource_prefix in prefix or lk in multi_region_var) {
-			violations[address] = rc
+		if is_spanner {
+			lk_arr = strings.split(lk, "/")
+			lk = lk_arr[-1]
+			if not (lk in spanner_region) {
+				violations[address] = rc
+			}
+		} else {
+
+			resource_prefix = strings.split(lk, "-")[0] + "-"
+			print(resource_prefix)
+			if not (resource_prefix in prefix or lk in multi_region_var) {
+				violations[address] = rc
+			}
 		}
 	}
 	return violations
@@ -117,7 +134,8 @@ for allResources as address, rc {
 }
 
 GCP_RES_LOCATION = rule { length(msgs) is 0 }
-print(msgs)
+
+#print(msgs)
 
 # Main rule
 main = rule { GCP_RES_LOCATION }
