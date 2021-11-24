@@ -14,10 +14,10 @@ module "generic-functions" {
     source = "../common-functions/generic-functions/generic-functions.sentinel"
 }
 
-policy "enforce-mandatory-labels" {
-    source = "./enforce-mandatory-labels.sentinel"
-    enforcement_level = "advisory"
-}
+#policy "enforce-mandatory-labels" {
+#    source = "./enforce-mandatory-labels.sentinel"
+#    enforcement_level = "advisory"
+#}
 
 param "gcp_region" {
   value = [ "US" ]
