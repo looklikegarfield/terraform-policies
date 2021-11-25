@@ -113,16 +113,16 @@ messages = {}
 environment_param = environment
 
 for allResources as address, rc {
-	rt = strings.split(address, ".")
-	resource_name = rc["change"]["after"][resourceTypesNameMap[rt[0]]]
-	if rt[0] in _naming {
+	rt = rc["type"]
+	resource_name = rc["change"]["after"][resourceTypesNameMap[rt]]
+	if rt in _naming {
 		resource_prefix = check_resource_prefix(resource_name, environment_param, "_")
 	} else {
 		resource_prefix = check_resource_prefix(resource_name, environment_param, "-")
 	}
 
 	if types.type_of(resource_prefix) is "undefined" {
-		message = plan.to_string(address) + " has " + plan.to_string(resourceTypesNameMap[rt[0]]) + " with value " +
+		message = plan.to_string(address) + " has " + plan.to_string(resourceTypesNameMap[rt]) + " with value " +
 			plan.to_string(resource_name) +
 			" that is not allowed."
 		violators[address] = rc
