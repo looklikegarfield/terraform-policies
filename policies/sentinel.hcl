@@ -79,6 +79,10 @@ policy "threat_gcp_unapproved_service_validation" {
     enforcement_level = "advisory"
 }
 
+    policy "google_kms" {
+    source = "./google_kms.sentinel"
+    enforcement_level = "advisory"
+}
     
 #policy "enforce-mandatory-labels" {
 #    source = "./enforce-mandatory-labels.sentinel"
