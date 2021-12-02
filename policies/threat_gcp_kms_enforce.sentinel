@@ -6,20 +6,8 @@ import "tfplan-functions" as plan
 import "strings"
 import "types"
 
-allKeyringResources = plan.find_resources("google_kms_key_ring")
 allKmsCryptokeyResources = plan.find_resources("google_kms_crypto_key")
 allKmsCryptokeySkipInitial = plan.find_resources("google_kms_crypto_key")
-
-keyring_messages = {}
-for allKeyringResources as address, rc {
-	keyring_location = plan.evaluate_attribute(rc.change.after, "location")
-	#print(keyring_location)
-
-	if not strings.has_prefix(keyring_location, "us-") {
-		keyring_messages[address] = " location with value " + keyring_location + " is not allowed"
-		print(keyring_messages[address])
-	}
-}
 
 cryptokey_messages = {}
 for allKmsCryptokeyResources as address, rc {
@@ -38,7 +26,7 @@ for allKmsCryptokeyResources as address, rc {
 
 		if key_rotation == "7776000s" {
 
-			#print("I am good ")
+			print("Key rotation period is 90 Days")
 
 		} else {
 
@@ -86,8 +74,7 @@ for allKmsCryptokeySkipInitial as address, rc {
 
 #****************************************************************************
 
-GCP_KMS_REGION = rule { length(keyring_messages) is 0 }
 GCP_KMS_ROTATION = rule { length(cryptokey_messages) is 0 }
 GCP_KMS_IMPORTONLY = rule { length(kms_skip_initial_messages) is 0 }
 
-main = rule { GCP_KMS_REGION and GCP_KMS_ROTATION and GCP_KMS_IMPORTONLY }
+main = rule { GCP_KMS_ROTATION and GCP_KMS_IMPORTONLY }

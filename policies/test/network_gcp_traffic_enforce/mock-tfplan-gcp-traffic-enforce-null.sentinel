@@ -130,7 +130,6 @@ planned_values = {
 							{
 								"internal_ip_only": true,
 								"metadata":         null,
-								"service_account":  null,
 								"service_account_scopes": [
 									"https://www.googleapis.com/auth/cloud-platform",
 								],
@@ -602,7 +601,6 @@ resource_changes = {
 							{
 								"internal_ip_only": true,
 								"metadata":         null,
-								"service_account":  null,
 								"service_account_scopes": [
 									"https://www.googleapis.com/auth/cloud-platform",
 								],
@@ -652,7 +650,8 @@ resource_changes = {
 						],
 						"gce_cluster_config": [
 							{
-								"network": true,
+								"network":         true,
+								"service_account": true,
 								"service_account_scopes": [
 									false,
 								],
@@ -1281,7 +1280,12 @@ raw = {
 										"internal_ip_only": {
 											"constant_value": true,
 										},
-										"service_account": {},
+										"service_account": {
+											"references": [
+												"google_service_account.dataproc_sa.email",
+												"google_service_account.dataproc_sa",
+											],
+										},
 										"service_account_scopes": {
 											"constant_value": [
 												"cloud-platform",
@@ -1821,7 +1825,6 @@ raw = {
 									{
 										"internal_ip_only": true,
 										"metadata":         null,
-										"service_account":  null,
 										"service_account_scopes": [
 											"https://www.googleapis.com/auth/cloud-platform",
 										],
@@ -2349,7 +2352,6 @@ raw = {
 								{
 									"internal_ip_only": true,
 									"metadata":         null,
-									"service_account":  null,
 									"service_account_scopes": [
 										"https://www.googleapis.com/auth/cloud-platform",
 									],
@@ -2434,7 +2436,8 @@ raw = {
 							],
 							"gce_cluster_config": [
 								{
-									"network": true,
+									"network":         true,
+									"service_account": true,
 									"service_account_scopes": [
 										false,
 									],

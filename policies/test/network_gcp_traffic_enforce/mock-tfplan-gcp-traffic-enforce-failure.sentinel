@@ -27,16 +27,17 @@ planned_values = {
 				"labels": {
 					"my-label": "my-label-value",
 				},
-				"max_instances":         0,
-				"name":                  "my-dev-appid-system-demo-function",
-				"runtime":               "python39",
-				"source_archive_bucket": "my-dev-appid-system-demo-gcsbucke",
-				"source_archive_object": "my-dev-appid-system-demo-gcsbucketobject",
-				"source_repository":     [],
-				"timeout":               60,
-				"timeouts":              null,
-				"trigger_http":          true,
-				"vpc_connector":         null,
+				"max_instances":                 0,
+				"name":                          "my-dev-appid-system-demo-function",
+				"runtime":                       "python39",
+				"service_account_email":         "service-sa@appspot.gserviceaccount.com",
+				"source_archive_bucket":         "my-dev-appid-system-demo-gcsbucke",
+				"source_archive_object":         "my-dev-appid-system-demo-gcsbucketobject",
+				"source_repository":             [],
+				"timeout":                       60,
+				"timeouts":                      null,
+				"trigger_http":                  true,
+				"vpc_connector_egress_settings": "PRIVATE_RANGES_ONLY",
 			},
 		},
 		"google_cloudfunctions_function_iam_member.invoker": {
@@ -130,7 +131,6 @@ planned_values = {
 							{
 								"internal_ip_only": true,
 								"metadata":         null,
-								"service_account":  null,
 								"service_account_scopes": [
 									"https://www.googleapis.com/auth/cloud-platform",
 								],
@@ -441,28 +441,28 @@ resource_changes = {
 				"labels": {
 					"my-label": "my-label-value",
 				},
-				"max_instances":         0,
-				"name":                  "my-dev-appid-system-demo-function",
-				"runtime":               "python39",
-				"source_archive_bucket": "my-dev-appid-system-demo-gcsbucke",
-				"source_archive_object": "my-dev-appid-system-demo-gcsbucketobject",
-				"source_repository":     [],
-				"timeout":               60,
-				"timeouts":              null,
-				"trigger_http":          true,
-				"vpc_connector":         null,
+				"max_instances":                 0,
+				"name":                          "my-dev-appid-system-demo-function",
+				"runtime":                       "python39",
+				"service_account_email":         "service-sa@appspot.gserviceaccount.com",
+				"source_archive_bucket":         "my-dev-appid-system-demo-gcsbucke",
+				"source_archive_object":         "my-dev-appid-system-demo-gcsbucketobject",
+				"source_repository":             [],
+				"timeout":                       60,
+				"timeouts":                      null,
+				"trigger_http":                  true,
+				"vpc_connector_egress_settings": "PRIVATE_RANGES_ONLY",
 			},
 			"after_unknown": {
-				"environment_variables":         {},
-				"event_trigger":                 true,
-				"https_trigger_url":             true,
-				"id":                            true,
-				"labels":                        {},
-				"project":                       true,
-				"region":                        true,
-				"service_account_email":         true,
-				"source_repository":             [],
-				"vpc_connector_egress_settings": true,
+				"environment_variables": {},
+				"event_trigger":         true,
+				"https_trigger_url":     true,
+				"id":                    true,
+				"labels":                {},
+				"project":               true,
+				"region":                true,
+				"source_repository":     [],
+				"vpc_connector":         true,
 			},
 			"before": null,
 		},
@@ -602,7 +602,6 @@ resource_changes = {
 							{
 								"internal_ip_only": true,
 								"metadata":         null,
-								"service_account":  null,
 								"service_account_scopes": [
 									"https://www.googleapis.com/auth/cloud-platform",
 								],
@@ -652,7 +651,8 @@ resource_changes = {
 						],
 						"gce_cluster_config": [
 							{
-								"network": true,
+								"network":         true,
+								"service_account": true,
 								"service_account_scopes": [
 									false,
 								],
@@ -1142,6 +1142,9 @@ raw = {
 						"runtime": {
 							"constant_value": "python39",
 						},
+						"service_account_email": {
+							"constant_value": "service-sa@appspot.gserviceaccount.com",
+						},
 						"source_archive_bucket": {
 							"references": [
 								"google_storage_bucket.bucket.name",
@@ -1159,6 +1162,15 @@ raw = {
 						},
 						"trigger_http": {
 							"constant_value": true,
+						},
+						"vpc_connector": {
+							"references": [
+								"google_vpc_access_connector.vpc_conn_example.id",
+								"google_vpc_access_connector.vpc_conn_example",
+							],
+						},
+						"vpc_connector_egress_settings": {
+							"constant_value": "PRIVATE_RANGES_ONLY",
 						},
 					},
 					"mode":                "managed",
@@ -1281,7 +1293,12 @@ raw = {
 										"internal_ip_only": {
 											"constant_value": true,
 										},
-										"service_account": {},
+										"service_account": {
+											"references": [
+												"google_service_account.dataproc_sa.email",
+												"google_service_account.dataproc_sa",
+											],
+										},
 										"service_account_scopes": {
 											"constant_value": [
 												"cloud-platform",
@@ -1670,16 +1687,17 @@ raw = {
 						"labels": {
 							"my-label": "my-label-value",
 						},
-						"max_instances":         0,
-						"name":                  "my-dev-appid-system-demo-function",
-						"runtime":               "python39",
-						"source_archive_bucket": "my-dev-appid-system-demo-gcsbucke",
-						"source_archive_object": "my-dev-appid-system-demo-gcsbucketobject",
-						"source_repository":     [],
-						"timeout":               60,
-						"timeouts":              null,
-						"trigger_http":          true,
-						"vpc_connector":         null,
+						"max_instances":                 0,
+						"name":                          "my-dev-appid-system-demo-function",
+						"runtime":                       "python39",
+						"service_account_email":         "service-sa@appspot.gserviceaccount.com",
+						"source_archive_bucket":         "my-dev-appid-system-demo-gcsbucke",
+						"source_archive_object":         "my-dev-appid-system-demo-gcsbucketobject",
+						"source_repository":             [],
+						"timeout":                       60,
+						"timeouts":                      null,
+						"trigger_http":                  true,
+						"vpc_connector_egress_settings": "PRIVATE_RANGES_ONLY",
 					},
 				},
 				{
@@ -1821,7 +1839,6 @@ raw = {
 									{
 										"internal_ip_only": true,
 										"metadata":         null,
-										"service_account":  null,
 										"service_account_scopes": [
 											"https://www.googleapis.com/auth/cloud-platform",
 										],
@@ -2163,16 +2180,17 @@ raw = {
 					"labels": {
 						"my-label": "my-label-value",
 					},
-					"max_instances":         0,
-					"name":                  "my-dev-appid-system-demo-function",
-					"runtime":               "python39",
-					"source_archive_bucket": "my-dev-appid-system-demo-gcsbucke",
-					"source_archive_object": "my-dev-appid-system-demo-gcsbucketobject",
-					"source_repository":     [],
-					"timeout":               60,
-					"timeouts":              null,
-					"trigger_http":          true,
-					"vpc_connector":         null,
+					"max_instances":                 0,
+					"name":                          "my-dev-appid-system-demo-function",
+					"runtime":                       "python39",
+					"service_account_email":         "service-sa@appspot.gserviceaccount.com",
+					"source_archive_bucket":         "my-dev-appid-system-demo-gcsbucke",
+					"source_archive_object":         "my-dev-appid-system-demo-gcsbucketobject",
+					"source_repository":             [],
+					"timeout":                       60,
+					"timeouts":                      null,
+					"trigger_http":                  true,
+					"vpc_connector_egress_settings": "PRIVATE_RANGES_ONLY",
 				},
 				"after_sensitive": {
 					"environment_variables": {},
@@ -2181,16 +2199,15 @@ raw = {
 					"source_repository":     [],
 				},
 				"after_unknown": {
-					"environment_variables":         {},
-					"event_trigger":                 true,
-					"https_trigger_url":             true,
-					"id":                            true,
-					"labels":                        {},
-					"project":                       true,
-					"region":                        true,
-					"service_account_email":         true,
-					"source_repository":             [],
-					"vpc_connector_egress_settings": true,
+					"environment_variables": {},
+					"event_trigger":         true,
+					"https_trigger_url":     true,
+					"id":                    true,
+					"labels":                {},
+					"project":               true,
+					"region":                true,
+					"source_repository":     [],
+					"vpc_connector":         true,
 				},
 				"before":           null,
 				"before_sensitive": false,
@@ -2349,7 +2366,6 @@ raw = {
 								{
 									"internal_ip_only": true,
 									"metadata":         null,
-									"service_account":  null,
 									"service_account_scopes": [
 										"https://www.googleapis.com/auth/cloud-platform",
 									],
@@ -2434,7 +2450,8 @@ raw = {
 							],
 							"gce_cluster_config": [
 								{
-									"network": true,
+									"network":         true,
+									"service_account": true,
 									"service_account_scopes": [
 										false,
 									],

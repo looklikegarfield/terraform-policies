@@ -15,7 +15,10 @@ spanner_region = ["nam10", "nam11", "nam3", "nam6", "nam7", "nam8", "nam9", "reg
 	"regional-us-east1", "regional-us-east4", "regional-us-west1", "regional-us-west2",
 	"regional-us-west3", "regional-us-west4", "regional-northamerica-northeast1", "regional-northamerica-northeast2"]
 
+cloudsql_allowed_region = ["northamerica-northeast1", "northamerica-northeast2"]
+
 multi_region_var = ["US"]
+global_var = ["global"]
 
 # Resource Types Region Map
 resourceTypesRegionMap = {
@@ -41,31 +44,67 @@ resourceTypesRegionMap = {
 	"google_spanner_instance": {
 		"key": "config",
 	},
+	"google_sql_database_instance": {
+		"key": "region",
+	},
+	"google_kms_key_ring": {
+		"key": "location",
+	},
 }
 
 # Function to check region prefix OR location prefix
 check_for_matches = func(location, address, rc) {
 	violations = {}
 	for location as lk {
-		#print(lk)
-		#print(rc["type"])
 		is_spanner = rule { rc["type"] == "google_spanner_instance" }
-		print(is_spanner)
+		is_dialogflow = rule { rc["type"] == "google_dialogflow_cx_agent" }
+		is_cloudsqlInstance = rule { rc["type"] == "google_sql_database_instance" }
+		is_kmsKeyring = rule { rc["type"] == "google_kms_key_ring" }
 
 		if is_spanner {
+
 			lk_arr = strings.split(lk, "/")
 			lk = lk_arr[-1]
+
 			if not (lk in spanner_region) {
 				violations[address] = rc
+				print("The location for " + address + " should be in: " + plan.to_string(spanner_region) + "only")
 			}
+
 		} else {
 
 			resource_prefix = strings.split(lk, "-")[0] + "-"
-			print(resource_prefix)
-			if not (resource_prefix in prefix or lk in multi_region_var) {
-				violations[address] = rc
+			#print(resource_prefix)
+
+			if is_dialogflow {
+
+				if not (resource_prefix in prefix or lk in global_var) {
+					violations[address] = rc
+					print("The location for " + address + " should be in " + plan.to_string(prefix) + " or " + plan.to_string(global_var) + " region only ")
+
+				}
+			} else if is_cloudsqlInstance {
+				if not (resource_prefix in prefix or lk in cloudsql_allowed_region) {
+					violations[address] = rc
+					print("The location for " + address + " should be in " + plan.to_string(prefix) + " or " + plan.to_string(cloudsql_allowed_region) + " region only ")
+
+				}
+			} else if is_kmsKeyring {
+				if not (resource_prefix in prefix) {
+					violations[address] = rc
+					print("The location for " + address + " should be in " + plan.to_string(prefix) + " region only ")
+
+				}
+
+			} else {
+
+				if not (resource_prefix in prefix or lk in multi_region_var) {
+					violations[address] = rc
+					print("The location for " + address + " should be in " + plan.to_string(prefix) + " or " + plan.to_string(multi_region_var) + " region only")
+				}
 			}
 		}
+
 	}
 	return violations
 }

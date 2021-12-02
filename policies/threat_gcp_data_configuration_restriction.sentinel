@@ -129,6 +129,40 @@ for resourceTypesDLPSFMap as key_address, _ {
 
 //*****************************************************************************
 
+# Get all dialogflow Resources
+all_df_Resources = plan.find_resources("google_dialogflow_cx_agent")
+
+dlp_messages = {}
+for all_df_Resources as address, rc {
+	dlp_security = plan.evaluate_attribute(rc.change.after, "security_settings")
+
+	is_dlp_security_null = rule { types.type_of(dlp_security) is "null" }
+	#print (is_dlp_security_null )
+
+	if is_dlp_security_null is true {
+
+		dlp_messages[address] = rc
+		print(" security_settings with value null is not allowed ")
+
+	} else {
+
+		if dlp_security is not null {
+			print("The value for google_dialogflow_cx_agent.security_settings is " + dlp_security)
+
+		} else {
+
+			dlp_messages[address] = rc
+			print("Please enter correct value for parameter security_settings in google_dialogflow_cx_agent !!!")
+
+		}
+	}
+
+}
+
+GCP_DIALOGFLOW_DLP = rule {
+	length(dlp_messages) is 0
+}
+
 GCP_DLP_TRIGGER = rule {
 	length(messages_trigger) is 0
 }
@@ -140,4 +174,4 @@ GCP_DLP_SAVEFINDINGS = rule {
 # Main rule
 print(messages)
 
-main = rule { GCP_DLP_TRIGGER and GCP_DLP_SAVEFINDINGS }
+main = rule { GCP_DLP_TRIGGER and GCP_DLP_SAVEFINDINGS and GCP_DIALOGFLOW_DLP }

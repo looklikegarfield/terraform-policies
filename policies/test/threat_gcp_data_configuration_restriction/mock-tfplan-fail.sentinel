@@ -442,7 +442,7 @@ resource_changes = {
 				"display_name":               "dialogflowcx-agent-1",
 				"enable_spell_correction":    true,
 				"enable_stackdriver_logging": true,
-				"location":                   "us-central1",
+				"location":                   "global",
 				"security_settings":          null,
 				"speech_to_text_settings": [
 					{
@@ -494,7 +494,7 @@ resource_changes = {
 				"display_name":               "dialogflowcx-agent-2",
 				"enable_spell_correction":    true,
 				"enable_stackdriver_logging": true,
-				"location":                   "global",
+				"location":                   "US",
 				"security_settings":          null,
 				"speech_to_text_settings": [
 					{

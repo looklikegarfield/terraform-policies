@@ -442,8 +442,8 @@ resource_changes = {
 				"display_name":               "dialogflowcx-agent-1",
 				"enable_spell_correction":    true,
 				"enable_stackdriver_logging": true,
-				"location":                   "us-central1",
-				"security_settings":          null,
+				"location":                   "global",
+				"security_settings":          "projects/<Project ID>/locations/<Location ID>/securitySettings/<Security Settings ID>",
 				"speech_to_text_settings": [
 					{
 						"enable_speech_adaptation": true,
@@ -494,8 +494,8 @@ resource_changes = {
 				"display_name":               "dialogflowcx-agent-2",
 				"enable_spell_correction":    true,
 				"enable_stackdriver_logging": true,
-				"location":                   "global",
-				"security_settings":          null,
+				"location":                   "US",
+				"security_settings":          "projects/<Project ID>/locations/<Location ID>/securitySettings/<Security Settings ID>",
 				"speech_to_text_settings": [
 					{
 						"enable_speech_adaptation": true,

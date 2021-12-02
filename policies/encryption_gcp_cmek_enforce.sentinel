@@ -29,6 +29,10 @@ resourceTypesCMEKKeyMap = {
 		"key":   "encryption.0.default_kms_key_name",
 		"array": null,
 	},
+	"google_sql_database_instance": {
+		"key":   "encryption_key_name",
+		"array": null,
+	},
 }
 
 # Function to check if KMS Param is Defined
