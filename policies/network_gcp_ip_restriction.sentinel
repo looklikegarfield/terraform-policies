@@ -11,9 +11,15 @@ selected_node = null
 messages = {}
 
 //******Resource Types internal IP Param Map***********************************
+
 resourceTypesInternalIPMap = {
 	"google_dataproc_cluster": {
-		"key": "cluster_config.0.gce_cluster_config.0.internal_ip_only",
+		"key":             "cluster_config.0.gce_cluster_config.0.internal_ip_only",
+		"expected_result": true,
+	},
+	"google_sql_database_instance": {
+		"key":             "settings.0.ip_configuration.0.ipv4_enabled",
+		"expected_result": false,
 	},
 }
 
@@ -26,13 +32,15 @@ check_internal_ip = func(address, rc) {
 	key = resourceTypesInternalIPMap[rc.type]["key"]
 	selected_node = plan.evaluate_attribute(rc, key)
 
+	selected_node_result = resourceTypesInternalIPMap[rc.type]["expected_result"]
+
 	if types.type_of(selected_node) is "null" or types.type_of(selected_node) is "undefined" {
 		return plan.to_string(address) + " does not have " + key + " defined"
 	} else {
-		if not selected_node {
-			return plan.to_string(address) + " service will be accessible through internal ip only but it is disabled here, please set value true to make it enable"
-		} else {
+		if selected_node is selected_node_result {
 			return null
+		} else {
+			return plan.to_string(address) + " service will be accessible through internal ip only, please set value " + plan.to_string(selected_node_result) + " to make it as per requirement."
 		}
 	}
 }

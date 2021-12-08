@@ -89,9 +89,9 @@ planned_values = {
 				"disabled":                null,
 				"log_config":              [],
 				"name":                    "allow-tcp-udp-icmp-dataprocdemo-fw",
-				"network":                 "projects/test-project/regions/us-central1/networks/us-dev-appid-syst-demo-vpc",
+				"network":                 "projects/common/regions/us-central1/networks/us-dev-appid-syst-demo-vpc",
 				"priority":                1000,
-				"project":                 "test-project",
+				"project":                 "common",
 				"source_ranges":           null,
 				"source_service_accounts": null,
 				"source_tags": [
@@ -134,7 +134,7 @@ planned_values = {
 								"service_account_scopes": [
 									"https://www.googleapis.com/auth/cloud-platform",
 								],
-								"subnetwork": "projects/test-project/regions/us-central1/subnetworks/us-dev-appid-syst-demo-subnet",
+								"subnetwork": "projects/common/regions/us-central1/subnetworks/us-dev-appid-syst-demo-subnet",
 								"tags": [
 									"dataproc-tag",
 								],
@@ -159,7 +159,7 @@ planned_values = {
 					"owner":                "hybridenv",
 				},
 				"name":     "my-dev-appid-strg-dlpdemo-dpcluster",
-				"project":  "test-project",
+				"project":  "common",
 				"region":   "us-central1",
 				"timeouts": null,
 			},
@@ -176,7 +176,7 @@ planned_values = {
 			"tainted":        false,
 			"type":           "google_kms_crypto_key",
 			"values": {
-				"key_ring": "projects/test-project/locations/us/keyRings/savita-keyring-us",
+				"key_ring": "projects/common/locations/us/keyRings/savita-keyring-us",
 				"labels": {
 					"application_division": "pci",
 					"application_name":     "app1",
@@ -274,7 +274,7 @@ planned_values = {
 			"type":           "google_project_iam_member",
 			"values": {
 				"condition": [],
-				"project":   "projects/test-project",
+				"project":   "projects/common",
 				"role":      "roles/dataproc.worker",
 			},
 		},
@@ -291,7 +291,7 @@ planned_values = {
 			"type":           "google_project_iam_member",
 			"values": {
 				"condition": [],
-				"project":   "projects/test-project",
+				"project":   "projects/common",
 				"role":      "roles/logging.logWriter",
 			},
 		},
@@ -311,7 +311,7 @@ planned_values = {
 				"description":  null,
 				"disabled":     false,
 				"display_name": "DataProc Service Account",
-				"project":      "test-project",
+				"project":      "common",
 				"timeouts":     null,
 			},
 		},
@@ -331,7 +331,7 @@ planned_values = {
 				"description":  null,
 				"disabled":     false,
 				"display_name": "Function Example Service Account",
-				"project":      "test-project",
+				"project":      "common",
 				"timeouts":     null,
 			},
 		},
@@ -529,9 +529,9 @@ resource_changes = {
 				"disabled":                null,
 				"log_config":              [],
 				"name":                    "allow-tcp-udp-icmp-dataprocdemo-fw",
-				"network":                 "projects/test-project/regions/us-central1/networks/us-dev-appid-syst-demo-vpc",
+				"network":                 "projects/common/regions/us-central1/networks/us-dev-appid-syst-demo-vpc",
 				"priority":                1000,
-				"project":                 "test-project",
+				"project":                 "common",
 				"source_ranges":           null,
 				"source_service_accounts": null,
 				"source_tags": [
@@ -605,7 +605,7 @@ resource_changes = {
 								"service_account_scopes": [
 									"https://www.googleapis.com/auth/cloud-platform",
 								],
-								"subnetwork": "projects/test-project/regions/us-central1/subnetworks/us-dev-appid-syst-demo-subnet",
+								"subnetwork": "projects/common/regions/us-central1/subnetworks/us-dev-appid-syst-demo-subnet",
 								"tags": [
 									"dataproc-tag",
 								],
@@ -630,7 +630,7 @@ resource_changes = {
 					"owner":                "hybridenv",
 				},
 				"name":     "my-dev-appid-strg-dlpdemo-dpcluster",
-				"project":  "test-project",
+				"project":  "common",
 				"region":   "us-central1",
 				"timeouts": null,
 			},
@@ -694,7 +694,7 @@ resource_changes = {
 				"create",
 			],
 			"after": {
-				"key_ring": "projects/test-project/locations/us/keyRings/savita-keyring-us",
+				"key_ring": "projects/common/locations/us/keyRings/savita-keyring-us",
 				"labels": {
 					"application_division": "pci",
 					"application_name":     "app1",
@@ -844,7 +844,7 @@ resource_changes = {
 			],
 			"after": {
 				"condition": [],
-				"project":   "projects/test-project",
+				"project":   "projects/common",
 				"role":      "roles/dataproc.worker",
 			},
 			"after_unknown": {
@@ -871,7 +871,7 @@ resource_changes = {
 			],
 			"after": {
 				"condition": [],
-				"project":   "projects/test-project",
+				"project":   "projects/common",
 				"role":      "roles/logging.logWriter",
 			},
 			"after_unknown": {
@@ -901,7 +901,7 @@ resource_changes = {
 				"description":  null,
 				"disabled":     false,
 				"display_name": "DataProc Service Account",
-				"project":      "test-project",
+				"project":      "common",
 				"timeouts":     null,
 			},
 			"after_unknown": {
@@ -931,7 +931,7 @@ resource_changes = {
 				"description":  null,
 				"disabled":     false,
 				"display_name": "Function Example Service Account",
-				"project":      "test-project",
+				"project":      "common",
 				"timeouts":     null,
 			},
 			"after_unknown": {
@@ -1086,7 +1086,7 @@ raw = {
 						],
 					},
 					"project": {
-						"constant_value": "test-project",
+						"constant_value": "common",
 					},
 					"region": {
 						"constant_value": "us-central1",
@@ -1240,10 +1240,10 @@ raw = {
 							"constant_value": "allow-tcp-udp-icmp-dataprocdemo-fw",
 						},
 						"network": {
-							"constant_value": "projects/test-project/regions/us-central1/networks/us-dev-appid-syst-demo-vpc",
+							"constant_value": "projects/common/regions/us-central1/networks/us-dev-appid-syst-demo-vpc",
 						},
 						"project": {
-							"constant_value": "test-project",
+							"constant_value": "common",
 						},
 						"source_tags": {
 							"constant_value": [
@@ -1305,7 +1305,7 @@ raw = {
 											],
 										},
 										"subnetwork": {
-											"constant_value": "projects/test-project/regions/us-central1/subnetworks/us-dev-appid-syst-demo-subnet",
+											"constant_value": "projects/common/regions/us-central1/subnetworks/us-dev-appid-syst-demo-subnet",
 										},
 										"tags": {
 											"constant_value": [
@@ -1351,7 +1351,7 @@ raw = {
 					"address": "google_kms_crypto_key.secrets",
 					"expressions": {
 						"key_ring": {
-							"constant_value": "projects/test-project/locations/us/keyRings/savita-keyring-us",
+							"constant_value": "projects/common/locations/us/keyRings/savita-keyring-us",
 						},
 						"labels": {
 							"constant_value": {
@@ -1556,7 +1556,7 @@ raw = {
 							"constant_value": "Function Example Service Account",
 						},
 						"project": {
-							"constant_value": "test-project",
+							"constant_value": "common",
 						},
 					},
 					"mode":                "managed",
@@ -1626,7 +1626,7 @@ raw = {
 					"address": "data.google_project.project",
 					"expressions": {
 						"project_id": {
-							"constant_value": "test-project",
+							"constant_value": "common",
 						},
 					},
 					"mode":                "data",
@@ -1639,7 +1639,7 @@ raw = {
 					"address": "data.google_storage_project_service_account.gcss_sa",
 					"expressions": {
 						"project": {
-							"constant_value": "test-project",
+							"constant_value": "common",
 						},
 					},
 					"mode":                "data",
@@ -1766,9 +1766,9 @@ raw = {
 						"disabled":                null,
 						"log_config":              [],
 						"name":                    "allow-tcp-udp-icmp-dataprocdemo-fw",
-						"network":                 "projects/test-project/regions/us-central1/networks/us-dev-appid-syst-demo-vpc",
+						"network":                 "projects/common/regions/us-central1/networks/us-dev-appid-syst-demo-vpc",
 						"priority":                1000,
-						"project":                 "test-project",
+						"project":                 "common",
 						"source_ranges":           null,
 						"source_service_accounts": null,
 						"source_tags": [
@@ -1842,7 +1842,7 @@ raw = {
 										"service_account_scopes": [
 											"https://www.googleapis.com/auth/cloud-platform",
 										],
-										"subnetwork": "projects/test-project/regions/us-central1/subnetworks/us-dev-appid-syst-demo-subnet",
+										"subnetwork": "projects/common/regions/us-central1/subnetworks/us-dev-appid-syst-demo-subnet",
 										"tags": [
 											"dataproc-tag",
 										],
@@ -1867,7 +1867,7 @@ raw = {
 							"owner":                "hybridenv",
 						},
 						"name":     "my-dev-appid-strg-dlpdemo-dpcluster",
-						"project":  "test-project",
+						"project":  "common",
 						"region":   "us-central1",
 						"timeouts": null,
 					},
@@ -1884,7 +1884,7 @@ raw = {
 					},
 					"type": "google_kms_crypto_key",
 					"values": {
-						"key_ring": "projects/test-project/locations/us/keyRings/savita-keyring-us",
+						"key_ring": "projects/common/locations/us/keyRings/savita-keyring-us",
 						"labels": {
 							"application_division": "pci",
 							"application_name":     "app1",
@@ -1978,7 +1978,7 @@ raw = {
 					"type": "google_project_iam_member",
 					"values": {
 						"condition": [],
-						"project":   "projects/test-project",
+						"project":   "projects/common",
 						"role":      "roles/dataproc.worker",
 					},
 				},
@@ -1994,7 +1994,7 @@ raw = {
 					"type": "google_project_iam_member",
 					"values": {
 						"condition": [],
-						"project":   "projects/test-project",
+						"project":   "projects/common",
 						"role":      "roles/logging.logWriter",
 					},
 				},
@@ -2011,7 +2011,7 @@ raw = {
 						"description":  null,
 						"disabled":     false,
 						"display_name": "DataProc Service Account",
-						"project":      "test-project",
+						"project":      "common",
 						"timeouts":     null,
 					},
 				},
@@ -2028,7 +2028,7 @@ raw = {
 						"description":  null,
 						"disabled":     false,
 						"display_name": "Function Example Service Account",
-						"project":      "test-project",
+						"project":      "common",
 						"timeouts":     null,
 					},
 				},
@@ -2132,12 +2132,12 @@ raw = {
 							"auto_create_network": null,
 							"billing_account":     "0177CD-5981DE-50612E",
 							"folder_id":           "299940155397",
-							"id":                  "projects/test-project",
+							"id":                  "projects/common",
 							"labels":              {},
-							"name":                "test-project",
+							"name":                "common",
 							"number":              "680501254856",
 							"org_id":              "",
-							"project_id":          "test-project",
+							"project_id":          "common",
 							"skip_delete":         null,
 						},
 					},
@@ -2152,7 +2152,7 @@ raw = {
 						"values": {
 							"email_address": "service-680501254856@gs-project-accounts.iam.gserviceaccount.com",
 							"id":            "service-680501254856@gs-project-accounts.iam.gserviceaccount.com",
-							"project":       "test-project",
+							"project":       "common",
 							"user_project":  null,
 						},
 					},
@@ -2273,9 +2273,9 @@ raw = {
 					"disabled":                null,
 					"log_config":              [],
 					"name":                    "allow-tcp-udp-icmp-dataprocdemo-fw",
-					"network":                 "projects/test-project/regions/us-central1/networks/us-dev-appid-syst-demo-vpc",
+					"network":                 "projects/common/regions/us-central1/networks/us-dev-appid-syst-demo-vpc",
 					"priority":                1000,
-					"project":                 "test-project",
+					"project":                 "common",
 					"source_ranges":           null,
 					"source_service_accounts": null,
 					"source_tags": [
@@ -2369,7 +2369,7 @@ raw = {
 									"service_account_scopes": [
 										"https://www.googleapis.com/auth/cloud-platform",
 									],
-									"subnetwork": "projects/test-project/regions/us-central1/subnetworks/us-dev-appid-syst-demo-subnet",
+									"subnetwork": "projects/common/regions/us-central1/subnetworks/us-dev-appid-syst-demo-subnet",
 									"tags": [
 										"dataproc-tag",
 									],
@@ -2394,7 +2394,7 @@ raw = {
 						"owner":                "hybridenv",
 					},
 					"name":     "my-dev-appid-strg-dlpdemo-dpcluster",
-					"project":  "test-project",
+					"project":  "common",
 					"region":   "us-central1",
 					"timeouts": null,
 				},
@@ -2491,7 +2491,7 @@ raw = {
 					"create",
 				],
 				"after": {
-					"key_ring": "projects/test-project/locations/us/keyRings/savita-keyring-us",
+					"key_ring": "projects/common/locations/us/keyRings/savita-keyring-us",
 					"labels": {
 						"application_division": "pci",
 						"application_name":     "app1",
@@ -2648,7 +2648,7 @@ raw = {
 				],
 				"after": {
 					"condition": [],
-					"project":   "projects/test-project",
+					"project":   "projects/common",
 					"role":      "roles/dataproc.worker",
 				},
 				"after_sensitive": {
@@ -2676,7 +2676,7 @@ raw = {
 				],
 				"after": {
 					"condition": [],
-					"project":   "projects/test-project",
+					"project":   "projects/common",
 					"role":      "roles/logging.logWriter",
 				},
 				"after_sensitive": {
@@ -2707,7 +2707,7 @@ raw = {
 					"description":  null,
 					"disabled":     false,
 					"display_name": "DataProc Service Account",
-					"project":      "test-project",
+					"project":      "common",
 					"timeouts":     null,
 				},
 				"after_sensitive": {},
@@ -2736,7 +2736,7 @@ raw = {
 					"description":  null,
 					"disabled":     false,
 					"display_name": "Function Example Service Account",
-					"project":      "test-project",
+					"project":      "common",
 					"timeouts":     null,
 				},
 				"after_sensitive": {},

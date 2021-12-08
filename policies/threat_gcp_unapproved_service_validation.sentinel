@@ -62,6 +62,7 @@ approved_services = [
 	"google_api_gateway_api_config",
 	"google_api_gateway_api",
 	"google_storage_bucket_object",
+	"google_data_loss_prevention_inspect_template",
 ]
 
 find_resources = func() {
