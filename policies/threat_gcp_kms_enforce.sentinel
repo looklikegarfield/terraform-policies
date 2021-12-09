@@ -43,13 +43,9 @@ for allKmsCryptokeyResources as address, rc {
 kms_skip_initial_messages = {}
 for allKmsCryptokeySkipInitial as address, rc {
 	skip_initial = plan.evaluate_attribute(rc.change.after, "skip_initial_version_creation")
-	val_import_only = plan.evaluate_attribute(rc.change.after_unknown, "import_only")
-
-	#print(skip_initial)
+	val_import_only = plan.evaluate_attribute(rc.change.after, "import_only")
 
 	is_skip_initial_null = rule { types.type_of(skip_initial) is "null" }
-
-	#print (is_skip_initial_null)
 
 	if is_skip_initial_null is true {
 

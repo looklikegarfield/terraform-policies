@@ -58,6 +58,7 @@ resource_changes = {
 				"create",
 			],
 			"after": {
+				"import_only":      true,
 				"labels":                        null,
 				"name":                          "cryopt-key-nav1",
 				"purpose":                       "ENCRYPT_DECRYPT",
@@ -68,7 +69,6 @@ resource_changes = {
 			"after_unknown": {
 				"destroy_scheduled_duration": true,
 				"id":               true,
-				"import_only":      true,
 				"key_ring":         true,
 				"self_link":        true,
 				"version_template": true,
