@@ -64,6 +64,7 @@ approved_services = [
 	"google_storage_bucket_object",
 	"google_data_loss_prevention_inspect_template",
 	"null_resource.import",
+	"null_resource.proto_descriptor",
 ]
 
 find_resources = func() {
