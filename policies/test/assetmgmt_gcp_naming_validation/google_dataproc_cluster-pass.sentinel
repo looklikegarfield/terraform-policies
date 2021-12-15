@@ -340,7 +340,7 @@ resource_changes = {
 					"gcp_region":           "EU",
 					"owner":                "hybridenv",
 				},
-				"name":     "us-dev-abcd-fghi-cluster",
+				"name":     "wf-us-dev-dp-fghi-cluster",
 				"region":   "us-central1",
 				"timeouts": null,
 			},

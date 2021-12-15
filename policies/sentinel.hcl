@@ -91,6 +91,15 @@ enforcement_level = "advisory"
 #    enforcement_level = "advisory"
 #}
 
+#param "org" {
+#  value = [ "wf" ]
+#}
+
+#param "country" {
+#  value = [ "us" ]
+#}
+
+
 #param "gcp_region" {
 #  value = [ "US" ]
 #}

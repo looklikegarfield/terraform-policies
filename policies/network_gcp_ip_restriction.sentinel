@@ -21,6 +21,10 @@ resourceTypesInternalIPMap = {
 		"key":             "settings.0.ip_configuration.0.ipv4_enabled",
 		"expected_result": false,
 	},
+	"google_compute_forwarding_rule": {
+		"key":             "load_balancing_scheme",
+		"expected_result": "INTERNAL_MANAGED",
+	},
 }
 
 //******Following function is being used to validate the internal ip settings**
@@ -40,7 +44,7 @@ check_internal_ip = func(address, rc) {
 		if selected_node is selected_node_result {
 			return null
 		} else {
-			return plan.to_string(address) + " service will be accessible through internal ip only, please set value " + plan.to_string(selected_node_result) + " to make it as per requirement."
+			return plan.to_string(address) + " service should be accessible through internal ip only, please set value " + plan.to_string(selected_node_result) + " to make it as per requirement."
 		}
 	}
 }

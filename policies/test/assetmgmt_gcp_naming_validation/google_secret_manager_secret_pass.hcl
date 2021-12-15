@@ -14,6 +14,14 @@ test {
   }
 }
 
+param "org" {
+  value = [ "wf" ]
+}
+
+param "country" {
+  value = [ "us" ]
+}
+
 param "gcp_region" {
   value = [ "US" ]
 }

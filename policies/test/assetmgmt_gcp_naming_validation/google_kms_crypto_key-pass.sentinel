@@ -778,7 +778,7 @@ resource_changes = {
 						"gcp_region":           "US",
 						"owner":                "hybridenv",
 					},
-				"name":                          "us-dev-abcd-fghi-cryptokey",
+				"name":                          "wf-us-dev-kms-fghi-cryptokey",
 				"purpose":                       "ENCRYPT_DECRYPT",
 				"rotation_period":               null,
 				"skip_initial_version_creation": null,
@@ -810,7 +810,7 @@ resource_changes = {
 			],
 			"after": {
 				"location": "global",
-				"name":     "us-dev-abcd-fghi-keyring",
+				"name":     "wf-us-dev-kms-fghi-keyring",
 				"timeouts": null,
 			},
 			"after_unknown": {

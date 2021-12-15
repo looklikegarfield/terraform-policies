@@ -59,7 +59,7 @@ resource_changes = {
 				"create",
 			],
 			"after": {
-				"dataset_id": "us_dev_abcd_fghi_dataset1",
+				"dataset_id": "wf_us_dev_bq_fghi_dataset1",
 				"default_encryption_configuration": [
 					{},
 				],
